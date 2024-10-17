@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+:root {
+    --bg-color: #f5f6f7;
+    --shadow-color: -4px -2px 4px 0px #ffffff,
+        8px 8px 6px 0px #DFE4EA;
+    --text-color: black;
+    --icon-color: #ff6a00;
+    --border-color: rgba(0, 0, 0, 0.05);
+    --btn-opacity: 0.65;
+    --box-shadow: -4px -2px 4px 0px #ffffff,
+        4px 2px 6px 0px #DFE4EA;
+    --hover-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.9),
+        inset 2px 2px 6px rgba(0, 0, 0, 0.1);
+    --color-orange: #ff6a00;
+    --color-equal-inset-shadow: inset -2px -2px 6px rgba(255, 106, 0, 0.2),
+        inset 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme {
+    --bg-color: #131419;
+    --shadow-color: -3px -3px 10px rgba(255, 255, 255, 0.05),
+        3px 3px 15px rgba(0, 0, 0, 0.5);
+    --text-color: white;
+    --icon-color: #ff6a00;
+    --border-color: rgba(0, 0, 0, 0.05);
+    --btn-opacity: 1;
+    --box-shadow: -3px -3px 10px rgba(255, 255, 255, 0.05),
+        3px 3px 15px rgba(0, 0, 0, 0.5);
+    --hover-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.01),
+        inset 2px 2px 6px rgba(0, 0, 0, 0.8);
+    --color-orange: #ff6a00;
+    --color-equal-inset-shadow: inset -2px -2px 6px rgba(255, 106, 0, 0.2),
+        inset 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+body {
+    background-color: var(--bg-color);
+}
+
+button {
+    cursor: pointer;
+}
+
+.main {
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    box-shadow: var(--shadow-color);
+}
+
+.header {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.75rem;
+    border: 3px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 0;
+    color: var(--text-color);
+}
+
+.icon {
+    font-size: 1.3rem;
+    opacity: 0.65;
+    color: var(--icon-color);
+}
+
+.header-btn {
+    background: transparent;
+    border: none;
+}
+
+.display {
+    display: flex;
+    height: 10rem;
+    background-color: transparent;
+    border: 3px solid var(--border-color);
+    padding-right: 1.5rem;
+    text-align: right;
+    align-items: flex-end;
+    justify-content: flex-end;
+    color: var(--text-color);
+    overflow: hidden;
+}
+
+#input {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+#output {
+    font-size: 3rem;
+    font-weight: 700;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--text-color);
+}
+
+.btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 1.125rem;
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+    opacity: var(--btn-opacity);
+    color: var(--text-color);
+}
+
+.btn:hover,
+.btn:active {
+    box-shadow: var(--hover-shadow);
+}
+
+.operator {
+    color: green;
+    font-size: 1.45rem;
+}
+
+.equal {
+    background-color: var(--color-orange);
+    color: white;
+}
+
+.equal:active,
+.equal:hover {
+    background: var(--color-orange);
+    box-shadow: var(--color-equal-inset-shadow);
+}
+
+.key-section {
+    padding: 1.25rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+}
+
+#history {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    max-height: 150px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ff6a00 #f5f6f7;
+}
+
+#history::-webkit-scrollbar {
+    width: 8px;
+}
+
+#history::-webkit-scrollbar-track {
+    background: #f5f6f7;
+}
+
+#history::-webkit-scrollbar-thumb {
+    background-color: #ff6a00;
+    border-radius: 10px;
+}
+
+#history::-webkit-scrollbar-thumb:hover {
+    background: #ff8c00;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.del-btn {
+    background: transparent;
+    border: none;
+    color: red;
+    cursor: pointer;
+    font-size: 1.125rem;
+}
+
+.history-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 600px) {
+    .main {
+        width: 95%;
+        padding: 1rem;
+
+    }
+    #input {
+        font-size: 1.25rem;
+    }
+    #output {
+        font-size: 2.5rem;
+    }
+    .btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    .header {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    #input {
+        font-size: 1rem;
+    }
+    #output {
+        font-size: 2rem;
+    }
+    .btn {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+}
